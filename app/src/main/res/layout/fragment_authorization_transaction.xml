@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.view.fragments.AuthorizationTransactionFragment"
+    android:background="@color/white">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue_nexos"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/ll_container_form"/>
+
+    <TextView
+        android:id="@+id/tv_author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_vertical_large"
+        android:layout_marginTop="@dimen/margin_vertical_large"
+        android:text="@string/author_name"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_vertical_large"
+        android:text="@string/authorization_text"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textAlignment="textStart"
+        android:layout_marginVertical="@dimen/margin_vertical_big"
+        app:layout_constraintTop_toBottomOf="@+id/tv_author"/>
+
+    <LinearLayout
+        android:id="@+id/ll_container_form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_horizontal_big"
+        android:background="@drawable/background_container_form"
+        android:orientation="vertical"
+        android:paddingVertical="@dimen/margin_vertical_large"
+        android:layout_marginVertical="@dimen/margin_vertical_large"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title">
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/TextLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_horizontal_big"
+            android:layout_marginTop="@dimen/margin_vertical_large"
+            android:hint="@string/commerce_code_text"
+            app:startIconDrawable="@drawable/ic_commerce_code">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ti_commerce_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_text_input"
+                android:inputType="textShortMessage"
+                android:text="000123"
+                android:textColor="@color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/TextLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_horizontal_big"
+            android:layout_marginVertical="@dimen/margin_vertical_large"
+            android:hint="@string/terminal_code_text"
+            app:startIconDrawable="@drawable/ic_terminal_code">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ti_terminal_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_text_input"
+                android:inputType="textShortMessage"
+                android:text="000ABC"
+                android:textColor="@color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/TextLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_horizontal_big"
+            android:hint="@string/amount_text"
+            app:startIconDrawable="@drawable/ic_amount">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ti_amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_text_input"
+                android:inputType="textShortMessage"
+                android:textColor="@color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/TextLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_horizontal_big"
+            android:layout_marginVertical="@dimen/margin_horizontal_large"
+            android:hint="@string/card_text"
+            app:startIconDrawable="@drawable/ic_card">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ti_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_text_input"
+                android:inputType="number"
+                android:text="1234567890123456"
+                android:textColor="@color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/submit_text"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/match_nexos"
+        android:paddingVertical="@dimen/padding_large"
+        android:layout_marginHorizontal="@dimen/margin_horizontal_big"
+        app:layout_constraintTop_toBottomOf="@id/ll_container_form"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

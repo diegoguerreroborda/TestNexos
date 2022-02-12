@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">TestNexos</string>
+    <string name="menu_transaction_text">Transactions</string>
+    <string name="menu_form_text">Formulario</string>
+    <string name="commerce_code_text">Commerce code</string>
+    <string name="terminal_code_text">Terminal code</string>
+    <string name="amount_text">Amount</string>
+    <string name="card_text">Card</string>
+    <string name="submit_text">Submit</string>
+    <string name="authorization_text">Authorization</string>
+    <string name="author_name">Diego Guerrero</string>
+    <string name="auth_list_text">Authorization List</string>
+</resources>

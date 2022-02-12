@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_horizontal_large">16dp</dimen>
+    <dimen name="margin_horizontal_medium">8dp</dimen>
+    <dimen name="margin_horizontal_small">4dp</dimen>
+
+    <dimen name="margin_vertical_big">32dp</dimen>
+    <dimen name="margin_vertical_large">16dp</dimen>
+    <dimen name="margin_vertical_medium">8dp</dimen>
+    <dimen name="margin_vertical_small">4dp</dimen>
+
+    <dimen name="padding_large">16dp</dimen>
+
+    <dimen name="radius_normal">8dp</dimen>
+    <dimen name="radius_large">16dp</dimen>
+
+    <dimen name="size_icon_menu">24dp</dimen>
+    <dimen name="margin_horizontal_big">32dp</dimen>
+    <dimen name="elevation_card">8dp</dimen>
+</resources>
