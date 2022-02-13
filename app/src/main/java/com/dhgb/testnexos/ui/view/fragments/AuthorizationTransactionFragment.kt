@@ -47,7 +47,6 @@ class AuthorizationTransactionFragment : Fragment() {
         }
 
         authorizationViewModel.mutableStatusCode.observe(viewLifecycleOwner, Observer {
-//            showToast(it)
             showDialog(binding.root.context, it)
         })
 

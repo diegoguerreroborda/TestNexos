@@ -32,21 +32,4 @@ class AuthAdapter(
     }
 
     override fun getItemCount(): Int = authList.size
-
-    fun updateList(list: List<AuthenticationEntity>) {
-        authList = list
-        notifyDataSetChanged()
-    }
-
-    fun filter(text: String?) {
-        val temp: MutableList<AuthViewHolder> = ArrayList()
-        for (d in authList) {
-            //or use .equal(text) with you want equal match
-            //use .toLowerCase() for better matches
-            if (d.receiptId.contains("$text")) {
-//                temp.add(d)
-            }
-        }
-        //update recyclerview
-    }
 }

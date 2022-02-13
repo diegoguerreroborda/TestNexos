@@ -33,10 +33,8 @@ class TransactionDetailViewModel: ViewModel() {
     @RequiresApi(Build.VERSION_CODES.O)
     fun deleteAuth(auth: AuthenticationEntity) {
         CoroutineScope(Dispatchers.IO).launch {
-            Log.d("SIN_INTERNET", "Annulment viewmodel")
             val response = api.annulmentTransaction(handleHeaders(auth.commerceCode, auth.terminalCode), auth)
             if(response != null){
-                Log.d("SIN_INTERNET", response.body()!!.statusCode)
                 if(response.body()!!.statusCode == "00"){
                     db.deleteApproveAuth(auth)
                     goBack.postValue(true)
