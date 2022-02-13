@@ -11,4 +11,5 @@
     <color name="hint">#2F4858</color>
     <color name="blue_nexos">#00659e</color>
     <color name="match_nexos">#f95c3f</color>
+    <color name="delete">#ed4247</color>
 </resources>

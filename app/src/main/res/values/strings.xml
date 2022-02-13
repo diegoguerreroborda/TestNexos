@@ -10,4 +10,6 @@
     <string name="authorization_text">Authorization</string>
     <string name="author_name">Diego Guerrero</string>
     <string name="auth_list_text">Authorization List</string>
+    <string name="transaction_text">Transaction</string>
+    <string name="delete_button_desc">Delete button</string>
 </resources>

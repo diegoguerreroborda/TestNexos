@@ -10,6 +10,7 @@
     <dimen name="margin_vertical_small">4dp</dimen>
 
     <dimen name="padding_large">16dp</dimen>
+    <dimen name="padding_normal">8dp</dimen>
 
     <dimen name="radius_normal">8dp</dimen>
     <dimen name="radius_large">16dp</dimen>

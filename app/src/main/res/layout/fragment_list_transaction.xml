@@ -40,8 +40,8 @@
 
     <ImageView
         android:id="@+id/iv_all_items"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
         android:layout_marginHorizontal="@dimen/margin_horizontal_large"
         android:layout_marginTop="@dimen/margin_vertical_large"
         android:src="@drawable/ic_all_items"
@@ -62,7 +62,8 @@
         android:id="@+id/rv_auth_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/margin_vertical_large"
+        android:layout_marginTop="@dimen/margin_vertical_big"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_title" />

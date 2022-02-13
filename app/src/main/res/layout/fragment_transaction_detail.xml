@@ -1,18 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.view.fragments.TransactionDetailFragment"
-    android:background="@color/white">
+    android:background="@color/white"
+    tools:context=".ui.view.fragments.TransactionDetailFragment">
+
+    <View
+        android:id="@+id/v_header"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="@color/blue_nexos"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_title"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/margin_horizontal_large"
+        android:layout_marginTop="@dimen/margin_vertical_large"
+        android:src="@drawable/ic_arrow_back"
+        android:tint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Transacción en detalle"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textSize="32dp"
-        android:textColor="@color/blue_nexos"/>
+        android:layout_marginHorizontal="@dimen/margin_vertical_large"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="@dimen/margin_vertical_big"
+        android:text="@string/transaction_text"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_horizontal_large"
+        android:layout_marginTop="86dp"
+        tools:text="#123"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/margin_vertical_large"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/background_container_form"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_receipt_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_horizontal_large"
+                android:layout_marginVertical="@dimen/margin_vertical_large"
+                tools:text="ReceiptId"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_rrn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_horizontal_large"
+                android:layout_marginVertical="@dimen/margin_vertical_large"
+                tools:text="RRN"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_status_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_horizontal_large"
+                android:layout_marginVertical="@dimen/margin_vertical_large"
+                tools:text="Status Code"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_commerce_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_horizontal_large"
+                android:layout_marginVertical="@dimen/margin_vertical_large"
+                tools:text="Commerce Code"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_terminal_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_horizontal_large"
+                android:layout_marginVertical="@dimen/margin_vertical_large"
+                tools:text="Terminal Code"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_horizontal_large"
+                android:layout_marginVertical="@dimen/margin_vertical_large"
+                tools:text="Amount"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_horizontal_large"
+                android:layout_marginVertical="@dimen/margin_vertical_large"
+                tools:text="Card"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/iv_delete"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="@dimen/margin_horizontal_large"
+        android:layout_marginBottom="@dimen/margin_vertical_large"
+        android:background="@drawable/background_button_circle"
+        android:padding="@dimen/padding_normal"
+        android:src="@drawable/ic_delete"
+        android:tint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@string/delete_button_desc" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
