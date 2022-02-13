@@ -23,7 +23,7 @@ class AuthorizationTransactionViewModel: ViewModel() {
     private lateinit var context: Context
     private lateinit var db: AuthDao
 
-    val mutableStatusCode = MutableLiveData<String>()
+    val mutableStatusCode = MutableLiveData<Int>()
 
     fun onCreate(contextC: Context) {
         context = contextC
@@ -46,7 +46,7 @@ class AuthorizationTransactionViewModel: ViewModel() {
                 TransactionModel(id.toString(), commerceCode, terminalCode,
                 amount, card))
             if(response != null){
-                mutableStatusCode.postValue(getTypeStatus(response.code()))
+                mutableStatusCode.postValue(response.code())
                 if(response.code() == STATUS_ACCEPTED){
                     val authEntity = AuthenticationEntity(response.body()!!.receiptId, response.body()!!.rrn,
                         response.body()!!.statusCode, response.body()!!.statusDescription,
@@ -54,7 +54,7 @@ class AuthorizationTransactionViewModel: ViewModel() {
                     db.insertApproveAuth(authEntity)
                 }
             }else {
-                mutableStatusCode.postValue("Server error")
+                mutableStatusCode.postValue(-1)
             }
 
         }
@@ -62,7 +62,7 @@ class AuthorizationTransactionViewModel: ViewModel() {
 
     private fun getTypeStatus(statusCode: Int): String{
          return when(statusCode) {
-            STATUS_ACCEPTED -> "Autorización aceptada"
+            STATUS_ACCEPTED -> "Authorization accepted"
             STATUS_BAD_REQUEST -> "Bad request"
             STATUS_UNAUTHORIZED -> "Sin autorización"
             else -> "Error inesperado"

@@ -1,17 +1,24 @@
 package com.dhgb.testnexos.ui.view.fragments
 
+import android.app.Dialog
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import android.view.Window
 import androidx.annotation.RequiresApi
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import com.dhgb.testnexos.R
+import com.dhgb.testnexos.databinding.DialogAlertServerBinding
 import com.dhgb.testnexos.databinding.FragmentAuthorizationTransactionBinding
 import com.dhgb.testnexos.ui.viewmodel.AuthorizationTransactionViewModel
+import kotlinx.android.synthetic.main.dialog_alert_server.*
+import kotlinx.android.synthetic.main.dialog_alert_server.view.*
+
 
 class AuthorizationTransactionFragment : Fragment() {
 
@@ -40,13 +47,49 @@ class AuthorizationTransactionFragment : Fragment() {
         }
 
         authorizationViewModel.mutableStatusCode.observe(viewLifecycleOwner, Observer {
-            showToast(it)
+//            showToast(it)
+            showDialog(binding.root.context, it)
         })
 
         return binding.root
     }
 
-    private fun showToast(message: String){
-        Toast.makeText(binding.root.context, message, Toast.LENGTH_SHORT).show()
+    private fun showDialog(context: Context, code: Int) {
+        val bindingD = DialogAlertServerBinding.inflate(LayoutInflater.from(context))
+        val dialog = Dialog(binding.root.context)
+        val width = resources.displayMetrics.widthPixels * 0.85
+        val height = resources.displayMetrics.heightPixels * 0.4
+
+        bindingD.lottieAnim.setAnimation(changeLottie(code))
+        bindingD.lottieAnim.playAnimation()
+        bindingD.tvResTitle.text = changeDataDialog(code)
+        bindingD.tvResBody.text = code.toString()
+        bindingD.btnOk.setOnClickListener{
+            dialog.dismiss()
+        }
+
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(bindingD.root)
+        dialog.show()
+        dialog.setCancelable(true)
+        dialog.window!!.setLayout(width.toInt(), height.toInt())
+    }
+
+    private fun changeDataDialog(code: Int): String {
+        return when(code) {
+            202 -> "Nice: Saved data"
+            400 -> "Wrong: Bad Request"
+            401 -> "Wrong: Unauthorized"
+            -1 -> "Wrong: Server Error"
+            else -> "Unexpected error"
+        }
+    }
+
+    private fun changeLottie(code: Int): Int {
+        return if(code == 202){
+            R.raw.lottie_yes
+        }else {
+            R.raw.lottie_no
+        }
     }
 }

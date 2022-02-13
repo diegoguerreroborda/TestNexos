@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background_item_authorization"
+    android:paddingVertical="@dimen/padding_large">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie_anim"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        app:lottie_rawRes="@raw/lottie_yes"
+        android:layout_gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/margin_vertical_large"/>
+
+    <TextView
+        android:id="@+id/tv_res_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Respuesta servidor"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/margin_vertical_large"/>
+
+    <TextView
+        android:id="@+id/tv_res_body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="202"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_res_title"/>
+
+    <Button
+        android:id="@+id/btn_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_text_ok"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/match_nexos"
+        android:layout_marginTop="@dimen/margin_vertical_large"
+        app:layout_constraintTop_toBottomOf="@+id/tv_res_body"/>
+
+</LinearLayout>
