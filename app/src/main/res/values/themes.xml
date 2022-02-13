@@ -23,4 +23,12 @@
         <item name="startIconTint">@color/blue_nexos</item>
     </style>
 
+    <style name="SearchEditText" parent="TextAppearance.AppCompat">
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxStrokeWidthFocused">2dp</item>
+        <item name="boxStrokeColor">@color/white</item>
+        <item name="android:textColorHint">@color/white_opaque</item>
+        <item name="hintTextColor">@color/white_opaque</item>
+        <item name="startIconTint">@color/white_opaque</item>
+    </style>
 </resources>

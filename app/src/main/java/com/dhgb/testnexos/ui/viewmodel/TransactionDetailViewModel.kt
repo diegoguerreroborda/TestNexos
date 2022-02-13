@@ -23,6 +23,8 @@ class TransactionDetailViewModel: ViewModel() {
 
     val goBack = MutableLiveData<Boolean>()
 
+    val resServer = MutableLiveData<String>()
+
     fun onCreate(contextC: Context) {
         context = contextC
         db = AuthenticationDb.DatabaseProvider.getDataBase(context).authDao()
@@ -34,8 +36,17 @@ class TransactionDetailViewModel: ViewModel() {
             Log.d("SIN_INTERNET", "Annulment viewmodel")
             val response = api.annulmentTransaction(handleHeaders(auth.commerceCode, auth.terminalCode), auth)
             if(response != null){
-                db.deleteApproveAuth(auth)
-                goBack.postValue(true)
+                Log.d("SIN_INTERNET", response.body()!!.statusCode)
+                if(response.body()!!.statusCode == "00"){
+                    db.deleteApproveAuth(auth)
+                    goBack.postValue(true)
+                    resServer.postValue("Deleted")
+                }else{
+                    resServer.postValue("Denied")
+                }
+
+            }else{
+                resServer.postValue("Server error")
             }
         }
     }

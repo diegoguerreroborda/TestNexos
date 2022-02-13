@@ -6,8 +6,9 @@ import com.dhgb.testnexos.data.database.entities.AuthenticationEntity
 import com.dhgb.testnexos.data.model.AuthenticationModel
 import com.dhgb.testnexos.data.model.ResponseAnnulment
 import com.dhgb.testnexos.data.model.TransactionModel
-import okhttp3.ResponseBody
+import retrofit2.HttpException
 import retrofit2.Response
+import java.lang.Exception
 import java.net.UnknownHostException
 
 class TransactionService {
@@ -18,14 +19,13 @@ class TransactionService {
     ): Response<AuthenticationModel>? {
         return try {
             val res = retrofit?.authTransaction(headers, transaction)
-            if(res?.isSuccessful == true){
-                res
-            }else {
-                Log.d("SIN_INTERNET", "URL incorrecta")
-                null
+            res
+        } catch (e: Exception) {
+            when(e) {
+                is UnknownHostException -> Log.d("HTTP", "Sin internet")
+                is HttpException -> Log.d("HTTP", "Servidor se demoró demasiado")
+                else -> Log.d("HTTP", "Error inesperado")
             }
-        } catch (e: UnknownHostException) {
-            Log.d("SIN_INTERNET", "Sin internet")
             null
         }
     }
@@ -39,7 +39,12 @@ class TransactionService {
             }else {
                 null
             }
-        } catch (e: UnknownHostException) {
+        } catch (e: Exception) {
+            when(e) {
+                is UnknownHostException -> Log.d("HTTP", "Sin internet")
+                is HttpException -> Log.d("HTTP", "Servidor se demoró demasiado")
+                else -> Log.d("HTTP", "Error inesperado")
+            }
             null
         }
     }

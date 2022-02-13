@@ -12,4 +12,5 @@
     <string name="auth_list_text">Authorization List</string>
     <string name="transaction_text">Transaction</string>
     <string name="delete_button_desc">Delete button</string>
+    <string name="search_by_receipt_id">Search by Receipt Id</string>
 </resources>

@@ -15,14 +15,26 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/rv_auth_list"/>
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/sv_auth"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_search"
+        style="@style/SearchEditText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/margin_horizontal_large"
-        android:layout_marginTop="@dimen/margin_vertical_large"
+        android:layout_marginHorizontal="@dimen/margin_horizontal_big"
+        android:layout_marginVertical="@dimen/margin_vertical_large"
+        android:hint="@string/search_by_receipt_id"
+        app:startIconDrawable="@drawable/ic_search"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ti_receipt_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_text_input"
+            android:inputType="textShortMessage"
+            android:textColor="@color/white" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/tv_title"
@@ -36,19 +48,7 @@
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sv_auth" />
-
-    <ImageView
-        android:id="@+id/iv_all_items"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_marginHorizontal="@dimen/margin_horizontal_large"
-        android:layout_marginTop="@dimen/margin_vertical_large"
-        android:src="@drawable/ic_all_items"
-        android:tint="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/tv_title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/til_search" />
 
     <View
         android:id="@+id/v_body"
@@ -62,7 +62,7 @@
         android:id="@+id/rv_auth_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/margin_vertical_big"
+        android:layout_marginTop="@dimen/margin_vertical_large"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

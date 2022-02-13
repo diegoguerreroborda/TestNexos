@@ -31,6 +31,7 @@ class AuthorizationTransactionFragment : Fragment() {
 
         binding.btnSubmit.setOnClickListener{
             authorizationViewModel.uploadTransaction(
+                111,
                 binding.tiCommerceCode.text.toString(),
                 binding.tiTerminalCode.text.toString(),
                 binding.tiAmount.text.toString(),

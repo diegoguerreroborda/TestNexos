@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
 import com.dhgb.testnexos.databinding.FragmentTransactionDetailBinding
@@ -50,8 +51,16 @@ class TransactionDetailFragment : Fragment() {
             transactionViewModel.goBack.observe(viewLifecycleOwner, {
                 requireActivity().onBackPressed()
             })
+
+            transactionViewModel.resServer.observe(viewLifecycleOwner, {
+                showToast(it)
+            })
         }
 
         return binding.root
+    }
+
+    private fun showToast(message: String){
+        Toast.makeText(binding.root.context, message, Toast.LENGTH_SHORT).show()
     }
 }

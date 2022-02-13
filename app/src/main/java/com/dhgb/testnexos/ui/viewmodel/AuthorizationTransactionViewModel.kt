@@ -39,21 +39,22 @@ class AuthorizationTransactionViewModel: ViewModel() {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun uploadTransaction(commerceCode: String, terminalCode: String, amount: String, card: String){
+    fun uploadTransaction(id: Int, commerceCode: String, terminalCode: String, amount: String, card: String){
         CoroutineScope(Dispatchers.IO).launch {
-            Log.d("SIN_INTERNET", "view model")
             val response = api.authTransaction(
                 handleHeaders(commerceCode, terminalCode),
-                TransactionModel("121", commerceCode, terminalCode,
+                TransactionModel(id.toString(), commerceCode, terminalCode,
                 amount, card))
             if(response != null){
-                val authEntity = AuthenticationEntity(response.body()!!.receiptId, response.body()!!.rrn,
-                    response.body()!!.statusCode, response.body()!!.statusDescription,
-                    "121", commerceCode, terminalCode, amount, card)
-                db.insertApproveAuth(authEntity)
                 mutableStatusCode.postValue(getTypeStatus(response.code()))
+                if(response.code() == STATUS_ACCEPTED){
+                    val authEntity = AuthenticationEntity(response.body()!!.receiptId, response.body()!!.rrn,
+                        response.body()!!.statusCode, response.body()!!.statusDescription,
+                        id.toString(), commerceCode, terminalCode, amount, card)
+                    db.insertApproveAuth(authEntity)
+                }
             }else {
-                mutableStatusCode.postValue("El servidor no responde")
+                mutableStatusCode.postValue("Server error")
             }
 
         }

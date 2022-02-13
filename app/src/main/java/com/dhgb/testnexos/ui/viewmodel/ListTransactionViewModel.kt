@@ -1,9 +1,6 @@
 package com.dhgb.testnexos.ui.viewmodel
 
 import android.content.Context
-import android.os.Build
-import android.util.Log
-import androidx.annotation.RequiresApi
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.dhgb.testnexos.data.database.AuthenticationDb
@@ -12,16 +9,14 @@ import com.dhgb.testnexos.data.database.entities.AuthenticationEntity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.util.*
 
-class ListTransactionViewModel: ViewModel() {
+class ListTransactionViewModel : ViewModel() {
 
     private lateinit var context: Context
     private lateinit var db: AuthDao
 
     val mutableListAuth = MutableLiveData<List<AuthenticationEntity>>()
-
-    val isVoidList = MutableLiveData<Boolean>()
+    lateinit var listAuth: List<AuthenticationEntity>
 
     fun onCreate(contextC: Context) {
         context = contextC
@@ -29,22 +24,25 @@ class ListTransactionViewModel: ViewModel() {
         getAuthList()
     }
 
-    fun getAuthList() {
+    private fun getAuthList() {
         CoroutineScope(Dispatchers.IO).launch {
             val list = db.getApproveAuth()
-            Log.d("ROOOM", "$list")
+            listAuth = list
             mutableListAuth.postValue(list)
         }
     }
 
-    fun getAuthByReceiptId(receiptId: String) {
-        CoroutineScope(Dispatchers.IO).launch {
-            if(db.getAuthByReceiptId(receiptId).isNotEmpty()){
-                mutableListAuth.postValue(db.getAuthByReceiptId(receiptId))
-            }else{
-                isVoidList.postValue(true)
+    fun getAuthByReceiptId(text: String) {
+        if(text.isNotEmpty()){
+            val auxListAuth: MutableList<AuthenticationEntity> = ArrayList()
+            for (d in listAuth) {
+                if (d.receiptId.contains("$text")) {
+                    auxListAuth.add(d)
+                }
             }
-
+            mutableListAuth.postValue(auxListAuth)
+        }else {
+            mutableListAuth.postValue(listAuth)
         }
     }
 }
